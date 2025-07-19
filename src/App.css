@@ -11,21 +11,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
 }
 
 .input-wrapper {
   display: flex;
-  justify-content: flex-start; /* Align to left */
-  margin-right: 500px;
-  padding: 2rem;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 .input-bar {
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 1rem;;
   font-size: 1rem;
   width: 550px;
-  border-radius: 25px;
-  border: none;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   outline: none;
   background: rgba(219, 210, 210, 0.2);
   backdrop-filter: blur(8px);
@@ -87,6 +92,21 @@ button:hover {
 .weather-info p {
   font-size: 1.2rem;
   margin: 0.3rem 0;
+}
+@media (max-width: 600px) {
+  .input-wrapper {
+    flex-direction: column;
+  }
+
+  .input-bar,
+  button {
+    width: 100%;
+    max-width: none;
+  }
+
+  .weather-container {
+    padding: 1.5rem;
+  }
 }
 
 .weather-info img {
