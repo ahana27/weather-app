@@ -1,21 +1,25 @@
+/* Global resets */
 body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
 
+/* Main app container */
 .App {
   min-height: 100vh;
   background: url("/Weatherin.png") no-repeat center center fixed;
   background-size: cover;
   display: flex;
+  flex-direction: column; /* changed from row-based layout */
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 1rem;
   font-family: Arial, sans-serif;
 }
 
+/* Input section */
 .input-wrapper {
   display: flex;
   flex-direction: row;
@@ -24,11 +28,16 @@ body {
   gap: 1rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
 }
+
+/* Input box */
 .input-bar {
   padding: 0.6rem 1rem;
   font-size: 1rem;
   width: 550px;
+  max-width: 100%;
   border: 1px solid #ccc;
   border-radius: 8px;
   outline: none;
@@ -50,28 +59,33 @@ body {
   color: black;
 }
 
+/* Button */
 button {
-  margin-left: 10px;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border-radius: 5px;
   background-color: #606089;
   color: white;
-  border: 20px;
+  border: none;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 button:hover {
   background-color: #606089;
   box-shadow: 0 0 10px rgba(153, 153, 188, 0.949);
 }
+
+/* Weather result box */
 .weather-container {
-  background-color: #f3f3f3;
+  background-color: rgba(255, 255, 255, 0.85);
   border-radius: 16px;
   padding: 2rem;
   max-width: 400px;
-  margin: 0 auto;
+  width: 100%;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  backdrop-filter: blur(4px);
+  margin-top: 1rem;
 }
 
 .weather-container h2 {
@@ -82,24 +96,32 @@ button:hover {
   font-size: 1rem;
   margin: 0.5rem 0;
 }
+
+/* Weather icon */
+.weather-info img {
+  margin-top: 1rem;
+  width: 100px;
+  height: 100px;
+}
+
+/* 📱 Responsive for small screens */
 @media (max-width: 600px) {
+  .App {
+    padding: 1.5rem 1rem;
+  }
+
   .input-wrapper {
     flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
   }
 
   .input-bar,
   button {
     width: 100%;
-    max-width: none;
   }
 
   .weather-container {
     padding: 1.5rem;
   }
-}
-
-.weather-info img {
-  margin-top: 1rem;
-  width: 100px;
-  height: 100px;
 }
