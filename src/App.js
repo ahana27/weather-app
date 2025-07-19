@@ -46,10 +46,12 @@ function App() {
         {loading && <p>Loading...</p>}
         {error && <p style={{ color: "red" }}>{error}</p>}
         {weather && (
-          <div className="weather-info">
-            <h2>{weather.name}</h2>
-            <p>{weather.main.temp} °C</p>
-            <p>{weather.weather[0].main}</p>
+           <div className="weather-container">
+                <h2>{weather.name}, {weather.sys.country}</h2>
+               <p>Temperature: {weather.main.temp}°C</p>
+               <p>Condition: {weather.weather[0].description}</p>
+               <p>Humidity: {weather.main.humidity}%</p>
+               <p>Wind Speed: {weather.wind.speed} m/s</p>
             <img
               alt="weather icon"
               src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
