@@ -1,38 +1,40 @@
-/* Global resets */
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100vh;
+  background-image: url("/public/Weatherin.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  overflow-x: hidden;
 }
 
-/* Main app container */
 .App {
-  min-height: 100vh;
-  background: url("/Weatherin.png") no-repeat center center fixed;
-  background-size: cover;
+  min-height: 100vh; /* Changed from height: 100% */
+  width: 100%;
   display: flex;
-  flex-direction: column; /* changed from row-based layout */
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
   align-items: center;
-  justify-content: flex-start;
-  text-align: center;
   padding: 2rem 1rem;
   font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 
-/* Input section */
+/* Input wrapper styles */
 .input-wrapper {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   margin-bottom: 2rem;
-  flex-wrap: wrap;
   width: 100%;
   max-width: 800px;
 }
 
-/* Input box */
+/* Input bar styles */
 .input-bar {
   padding: 0.6rem 1rem;
   font-size: 1rem;
@@ -59,7 +61,7 @@ body {
   color: black;
 }
 
-/* Button */
+/* Button styles */
 button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -76,14 +78,14 @@ button:hover {
   box-shadow: 0 0 10px rgba(153, 153, 188, 0.949);
 }
 
-/* Weather result box */
+/* Weather info container */
 .weather-container {
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 16px;
   padding: 2rem;
   max-width: 400px;
   width: 100%;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4px);
   margin-top: 1rem;
 }
@@ -104,24 +106,67 @@ button:hover {
   height: 100px;
 }
 
-/* 📱 Responsive for small screens */
-@media (max-width: 600px) {
-  .App {
-    padding: 1.5rem 1rem;
+/* 📱 Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport for mobile */
   }
 
+  .App {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 600px) {
   .input-wrapper {
     flex-direction: column;
     align-items: stretch;
-    gap: 0.8rem;
   }
 
   .input-bar,
   button {
     width: 100%;
+    max-width: 100%;
   }
 
   .weather-container {
     padding: 1.5rem;
+  }
+}
+
+/* Mobile specific fixes */
+@media (max-width: 480px) {
+  body {
+    background-size: cover;
+    background-position: center top;
+    min-height: 100vh;
+    min-height: 100svh; /* Small viewport height */
+  }
+
+  .App {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 1rem 0.5rem;
+  }
+
+  .weather-container {
+    padding: 1rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Safari mobile specific fix */
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+
+  .App {
+    min-height: -webkit-fill-available;
   }
 }
